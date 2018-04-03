@@ -57,17 +57,17 @@
               <td>{{ $empresa->nome }}</td>
               <td>{{ $empresa->endereco }}</td>
               <td>
-                @if($empresa->cpnj == '')
+                @if($empresa->cnpjView == '')
                   <b class="text-danger ion-close-round"> Não cadastrado</b>
                   @else
-                  {{ $empresa->cnpj }}
+                  @php
+                    echo Crypt::decryptString($empresa->cnpjView);
+                  @endphp
                 @endif
               </td>
               <td>
                 <a href="{{ route('verEmpresa', [$empresa->id]) }}" class="btn btn-success ion-eye" style="margin-right: 10px"> Ver</a>
-                <a href="{{ route('apagarEmpresa', [$empresa->id]) }}" class="btn btn-success ion-ios-trash-outline"
-                   style="margin-right: 10px">
-                  Apagar</a>
+                <a href="{{ route('apagarEmpresa', [$empresa->id]) }}" class="btn btn-success ion-ios-trash-outline" style="margin-right: 10px">Apagar</a>
               </td>
             </tr>
           @endforeach
@@ -77,4 +77,29 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('script-src')
+  <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
+  @if(Session::has('success'))
+    <script>
+      swal({
+        title: "Tudo certo",
+        text: "{{ Session::get('success') }}",
+        button: "OK!",
+        icon: "success"
+      });
+    </script>
+  @endif
+
+  @if(Session::has('error'))
+    <script>
+      swal({
+        title: "Ops!",
+        text: "{{ Session::get('error') }}",
+        button: "OK!",
+        icon: "error"
+      });
+    </script>
+  @endif
 @endsection

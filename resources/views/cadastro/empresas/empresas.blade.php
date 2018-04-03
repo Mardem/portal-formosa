@@ -46,12 +46,12 @@
       </div>
       <div class="form-group">
         <label>Telefone</label>
-        <input name="telefone" type="text" class="form-control" value="{{ old('telefone') }}">
+        <input name="telefone" type="text" class="form-control" value="{{ old('telefone') }}" id="telefone">
         <small class="text-muted">Digite o número de telefone da empresa</small>
       </div>
       <div class="form-group">
         <label>CNPJ</label>
-        <input name="cnpj" type="text" class="form-control" value="{{ old('telefone') }}">
+        <input name="cnpj" type="text" class="form-control" value="{{ old('cnpj') }}" id="cnpj">
         <small class="text-muted">Insira o CNPJ da empresa</small>
       </div>
       <button class="btn btn-primary">
@@ -87,14 +87,16 @@
           <tr>
             <th>#</th>
             <th>Nome</th>
+            <th>Descrição</th>
             <th>Ações</th>
           </tr>
           </thead>
           <tbody>
             @foreach($categorias as $categoria)
               <tr>
-                <td scope="row">{{ $categoria->id }}</td>
+                <td>{{ $categoria->id }}</td>
                 <td>{{ $categoria->nome }}</td>
+                <td>{{ $categoria->descricao }}</td>
                 <td>
                   <a href="{{ route('apagarCategoria', [$categoria->id]) }}" class="btn btn-primary
                   ion-ios-trash-outline"> Apagar</a>
@@ -131,4 +133,8 @@
       });
     </script>
   @endif
+  <script>
+    $('#telefone').inputmask("(99) 9999-9999");  //static mask
+    $('#cnpj').inputmask("99.999.999/9999-99");  //static mask
+  </script>
 @endsection

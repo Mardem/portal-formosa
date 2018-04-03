@@ -21,6 +21,7 @@
   <link href="{{ asset('css/default/dashboard/lib/owl.theme.default.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/default/dashboard/helper.css') }}" rel="stylesheet">
   <link href="{{ asset('css/default/dashboard/style.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/css/inputmask.min.css" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
   <!--[if lt IE 9]>
@@ -228,7 +229,7 @@
           <li>
             <form action="{{ route('pesquisarUsuario') }}" method="post">
               @csrf
-              <input type="text" name="pesquisa" class="form-control" placeholder=" Pesquisar usuário">
+              <input type="text" name="pesquisa" class="form-control" id="pesquisaCPF" placeholder=" Pesquisar CPF">
             </form>
           </li>
           <li class="nav-label">Home</li>
@@ -327,8 +328,11 @@
 <script src="{{ asset('js/default/dashboard/scripts.js') }}"></script>
 <!-- scripit init-->
 <script src="{{ asset('js/default/dashboard/custom.min.js') }}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
 @yield('script-src')
 
+<script>
+  $('#pesquisaCPF').inputmask("999.999.999-99");  //static mask
+</script>
 </body>
 </html>

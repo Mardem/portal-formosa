@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Usuarios;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
@@ -18,12 +19,14 @@ class UsuariosController extends Controller
             $u = \App\User::find($request->id);
             
             if ($u->cpf == '') {
-                $u->cpf = $request->cpf;
+                $u->cpf = md5($request->cpf);
+                $u->cpfView = Crypt::encryptString($request->cpf);
             } else {
             }
             
             if ($u->cnpj == '') {
-                $u->cnpj = $request->cnpj;
+                $u->cnpj = md5($request->cnpj);
+                $u->cnpjView = Crypt::encryptString($request->cnpj);
             } else {
             }
             
@@ -41,6 +44,35 @@ class UsuariosController extends Controller
     
     public function pesquisa(Request $request)
     {
-        dd($request->all());
+        try {
+            $u = \App\User::where('cpf', '=', md5($request->pesquisa))->get()[0];
+            $vinculoEmpresa = \App\Models\Empresa::where('cnpj', '=', md5($request->cnpj))->paginate();
+            return view('usuarios.pesquisa', compact('u', 'vinculoEmpresa'));
+        } catch (\Exception $e) {
+            session()->flash('error', 'Usuário não encontrado!');
+            return redirect()->back();
+        }
+    }
+    public function pesquisarEmpresa (Request $request)
+    {
+        
+        if ($request->cnpj == '') {
+            session()->flash('error', 'Empresa não encontrada!');
+            return redirect()->route('todosCadastros');
+        }else {
+            try {
+                $vE = \App\Models\Empresa::where('cnpj', '=', md5($request->cnpj))->get()[0];
+                $user = \App\User::find($request->usuario);
+                return view('vinculos.empresa-usuario', compact('vE', 'user'));
+            } catch (\Exception $e) {
+                session()->flash('error', 'Empresa não encontrada!');
+                return redirect()->route('todosCadastros');
+            }
+        }
+    }
+    
+    public function vincularEmpresa ($empresa, $usuario)
+    {
+        dd($_GET);
     }
 }

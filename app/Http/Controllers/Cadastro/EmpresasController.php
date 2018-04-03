@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Cadastro;
 
+use Illuminate\Support\Facades\Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,8 @@ class EmpresasController extends Controller
             $e->categoria = $request->categoria;
             $e->endereco = $request->endereco;
             $e->telefone = $request->telefone;
-            $e->cnpj = $request->cnpj;
+            $e->cnpj = md5($request->cnpj);
+            $e->cnpjView = Crypt::encryptString($request->cnpj);
             $e->plano = 0;
             $e->save();
             

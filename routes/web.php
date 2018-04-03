@@ -41,6 +41,9 @@ Route::group(['middleware' => ['auth', 'can:admin'], 'namespace' => 'Usuarios', 
     Route::get('dados', 'UsuariosController@index')->name('dadosUsuarios');
     Route::post('atualizar-usuario', 'UsuariosController@updateData')->name('atualizarUsuario');
     Route::post('pesquisa', 'UsuariosController@pesquisa')->name('pesquisarUsuario');
+    
+    Route::post('pesquisa-empresa', 'UsuariosController@pesquisarEmpresa')->name('pesquisarEmpresa');
+    Route::get('realizar-vinculo/{idEmpresa}/{idUser}', 'UsuariosController@vincularEmpresa')->name('realizarVinculo');
 });
 
 Route::get('{noticia}', 'Aberto\NoticiasController@mostrarNoticia')->name('lerNoticia');

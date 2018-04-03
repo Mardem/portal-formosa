@@ -39,7 +39,9 @@
                 @if($e->cnpj == '')
                   <b class="text-danger ion-close-round"> Não cadastrado</b>
                   @else
-                  {{ $e->cnpj }}
+                  @php
+                    echo Crypt::decryptString($e->cnpjView);
+                  @endphp
                 @endif
               </label>
             </div>

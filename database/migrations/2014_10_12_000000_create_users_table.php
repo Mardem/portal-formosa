@@ -21,7 +21,9 @@ class CreateUsersTable extends Migration
             $table->integer('category');
             $table->string('empresa')->nullable();
             $table->string('cnpj')->nullable();
+            $table->string('cnpjView')->nullable();
             $table->string('cpf')->nullable();
+            $table->string('cpfView')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

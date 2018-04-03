@@ -21,6 +21,7 @@ class CreateEmpresasTable extends Migration
             $table->string('endereco');
             $table->string('telefone')->nullable();
             $table->string('cnpj')->nullable();
+            $table->string('cnpjView')->nullable();
             $table->string('razaoSocial')->nullable();
             $table->string('celular')->nullable();
             $table->string('email')->nullable();
@@ -30,6 +31,7 @@ class CreateEmpresasTable extends Migration
             $table->string('googlePlus')->nullable();
             $table->string('youtube')->nullable();
             $table->string('plano')->nullable();
+            $table->string('vinculo')->nullable();
             $table->timestamps();
         }
         );
