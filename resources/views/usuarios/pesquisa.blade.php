@@ -33,7 +33,7 @@
       <div class="row">
         <div class="col-sm-4" style="margin-bottom: 10px">
           <p>
-           <i class="fa fa-user" aria-hidden="true"></i> Nome completo: <b class="text-primary">{{ $u->name }}</b>
+            <i class="fa fa-user" aria-hidden="true"></i> Nome completo: <b class="text-primary">{{ $u->name }}</b>
           </p>
         </div>
         <div class="col-sm-4" style="margin-bottom: 10px">
@@ -44,13 +44,15 @@
         </div>
         <div class="col-sm-4" style="margin-bottom: 10px">
           <p>
-            <i class="fa fa-industry" aria-hidden="true"></i> Empresa Vinculada:
+            <i class="fa fa-industry" aria-hidden="true"></i> Empresas Vinculadas:
             @if($u->empresa == '')
               <b class="text-danger">
                 <i class="fa fa-times-rectangle" aria-hidden="true"></i> Nenhuma vinculada
               </b>
-              @else
-              <b class="text-primary">{{ $u->empresa }}</b>
+            @else
+              <b class="text-primary">
+                {{ $empresas }}
+              </b>
             @endif
           </p>
         </div>
@@ -64,7 +66,7 @@
               <b class="text-danger">
                 <i class="fa fa-times-rectangle" aria-hidden="true"></i> Nenhum cadastrado
               </b>
-              @else
+            @else
               <b class="text-primary">
                 @php
                   echo Crypt::decryptString($u->cpfView);
@@ -137,7 +139,7 @@
             </div>
           </div>
         </div>
-        @else
+      @else
         <div align="center">
           <h1 class="lead text-info">
             <i class="fa fa-info-circle" aria-hidden="true"></i> Todas informações cadastradas!
@@ -177,13 +179,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td scope="row">1</td>
-                  <td>Teste</td>
-                  <td>
-                    <a href="#" class="btn btn-primary ion-eye"> Ver</a>
-                  </td>
-                </tr>
+                @foreach($vinculoEmpresa as $empresa)
+                  <tr>
+                    <td scope="row">{{ $empresa->id }}</td>
+                    <td>{{ $empresa->nome }}</td>
+                    <td>
+                      <a href="{{ route('verEmpresa', [$empresa->id]) }}" class="btn btn-primary ion-eye"> Ver</a>
+                    </td>
+                  </tr>
+                @endforeach
                 </tbody>
               </table>
             </div>

@@ -156,8 +156,12 @@
               <button class="btn btn-primary" style="margin-top: 5px;"><i class="fa fa-save"></i> Atualizar
                 plano</button>
 
-              <h3>Vinculo com usuário</h3>
-              <h4><i class="fa fa-user-circle" aria-hidden="true"></i> Marden Cavalcante</h4>
+              @if($userC == 0)
+                @else
+                <h3>Vinculo com usuário</h3>
+                <h4><i class="fa fa-user-circle" aria-hidden="true"></i> {{ $user->name }}</h4>
+                <a href="{{ route('removerVinculo', [$e->id, $user->id]) }}"><i class="fa fa-eraser" aria-hidden="true"></i> Remover vinculo</a>
+              @endif
             </div>
           </div>
         </div>

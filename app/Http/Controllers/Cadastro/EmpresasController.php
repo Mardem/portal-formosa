@@ -12,7 +12,7 @@ class EmpresasController extends Controller
     {
         $e = \App\Models\Empresa::orderBy('id', 'desc')->paginate();
         $empresasCount = \App\Models\Empresa::count();
-        return view('cadastro.empresas.todos', compact('e', 'empresasCount'));
+         return view('cadastro.empresas.todos', compact('e','empresasCount'));
     }
     
     public function novaEmpresa()
@@ -43,6 +43,7 @@ class EmpresasController extends Controller
             $e->cnpj = md5($request->cnpj);
             $e->cnpjView = Crypt::encryptString($request->cnpj);
             $e->plano = 0;
+            $e->empresa = '*';
             $e->save();
             
             session()->flash('success', 'Empresa cadastrada com sucesso!');
@@ -94,7 +95,10 @@ class EmpresasController extends Controller
     public function ver($id)
     {
         $e = \App\Models\Empresa::find($id);
-        return view('cadastro.empresas.ver', compact('e'));
+        $user = \App\User::find($e->vinculo);
+        $userC = \App\User::where('empresa', '=', $e->vinculo)->count();
+        
+        return view('cadastro.empresas.ver', compact('e', 'user','userC'));
     }
     
     public function deleteEmpresa($id)

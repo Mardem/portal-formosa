@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth', 'can:admin'], 'namespace' => 'Usuarios', 
     
     Route::post('pesquisa-empresa', 'UsuariosController@pesquisarEmpresa')->name('pesquisarEmpresa');
     Route::get('realizar-vinculo/{idEmpresa}/{idUser}', 'UsuariosController@vincularEmpresa')->name('realizarVinculo');
+    Route::get('remover-vinculo/{idEmpresa}/{idUser}', 'UsuariosController@removerVinculo')->name('removerVinculo');
 });
 
 Route::get('{noticia}', 'Aberto\NoticiasController@mostrarNoticia')->name('lerNoticia');

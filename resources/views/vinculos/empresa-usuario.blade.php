@@ -42,7 +42,9 @@
             </label>
           </div>
         </div>
-        <a type="submit" class="btn btn-primary btn-block ion-arrow-swap" href="">
+        <a type="submit" class="btn btn-primary btn-block ion-arrow-swap" href="{{ route('realizarVinculo', [$vE->id,
+         $user->id])
+        }}">
           Vincular empresa
         </a>
       </fieldset>
