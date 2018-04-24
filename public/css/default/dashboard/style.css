@@ -6921,3 +6921,17 @@ tbody tr td:last-child {
     display: inline-block !important;
   }
 }
+footer.footer-site-padrao {
+  color: #fff;
+  background: #00053e;
+  text-align: center;
+  margin: 0 !important;
+  padding-bottom:10px;
+}
+
+footer.footer-site-padrao a {
+  color: #439eff;
+}
+footer.footer-site-padrao a:hover {
+  color: #9cffc0;
+}

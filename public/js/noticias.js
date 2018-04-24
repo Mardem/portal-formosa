@@ -1,3 +1,4 @@
+$('#cp4').colorpicker({"color": "#563d7c"});
 $('#editor').trumbowyg({
   lang: 'pt_br',
   btns: [

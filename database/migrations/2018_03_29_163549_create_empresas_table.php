@@ -19,6 +19,10 @@ class CreateEmpresasTable extends Migration
             $table->string('nome');
             $table->string('categoria');
             $table->string('endereco');
+            $table->string('bairro');
+            $table->string('numero');
+            $table->string('cidade');
+            $table->string('estado');
             $table->string('telefone')->nullable();
             $table->string('cnpj')->nullable();
             $table->string('cnpjView')->nullable();
@@ -32,6 +36,7 @@ class CreateEmpresasTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('plano')->nullable();
             $table->string('vinculo')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         }
         );

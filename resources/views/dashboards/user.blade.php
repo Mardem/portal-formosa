@@ -3,6 +3,16 @@
 @section('container')
   <div class="container-fluid">
     <!-- Start Page Content -->
+
+    @if(Auth::user()->cpf == '' || Auth::user()->cnpj == '')
+      <div class="alert" role="alert" style="background: #ff2247;color: #fff;text-align: center">
+        <strong>Seus dados ainda estão incompletos! Confirme os seus dados para tirar o máximo de proveito da plataforma.</strong>
+        <br><br>
+        <a href="{{ route('dadosUsuarios') }}" class="btn btn-dark">Completar dados</a>
+      </div>
+      @else
+    @endif
+
     <div class="row">
       <div class="col-md-3">
         <div class="card p-30">

@@ -54,8 +54,13 @@
                 @endif
               </td>
               <td>
-                <a href="{{ url($noticia->link) }}" target="_blank">Ver</a> |
-                <a href="{{ route('apagarNoticia', [$noticia->id]) }}">Apagar</a>
+                <a href="{{ url($noticia->link) }}" target="_blank" class="btn btn-primary ion-eye" style="width: 100%;margin-bottom: 3px;"> Ver</a>
+                <form action="{{ route('apagarNoticia') }}" method="post">
+                  @csrf
+                  <input type="text" name="id" value="{{ $noticia->id }}" class="hidden">
+                  <input type="text" name="imagem" value="{{ $noticia->imagem }}" class="hidden">
+                  <button class="btn btn-danger ion-trash-b" type="submit" style="width: 100%;margin-bottom: 3px;"> Apagar</button>
+                </form>
               </td>
             </tr>
           @endforeach

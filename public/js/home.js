@@ -35,7 +35,7 @@ function random(){
 }
 
 $('.owl-carousel').owlCarousel({
-    loop:true,
+    loop:false,
     margin:10,
     lazyLoad: true,
     responsive:{

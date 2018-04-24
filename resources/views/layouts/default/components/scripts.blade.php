@@ -3,3 +3,8 @@
 <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-3.2.1.min.js') }}"><\/script>')</script>
 <script src="{{ asset('js/plugins.js') }}"></script>
 <script src="{{ asset('node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/default/site/lazy.min.js') }}"></script>
+<script src="{{ asset('js/vendor/jquery.easeScroll.min.js') }}"></script>
+<script>
+    $("html").easeScroll();
+</script>

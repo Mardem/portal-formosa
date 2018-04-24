@@ -198,7 +198,16 @@
               <ul class="dropdown-user">
                 <li><a href="{{ route('dadosUsuarios') }}"><i class="fa fa-cog" aria-hidden="true"></i>
                     Configurações</a></li>
-                <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                <li>
+                  <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
+                    <i class="fa fa-power-off"></i> Logout
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                    </form>
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -256,6 +265,13 @@
               <ul aria-expanded="false" class="collapse">
                 <li><a href="{{ route('todosCadastros') }}" class="ion-eye"> Ver todas</a></li>
                 <li><a href="{{ route('cadastroNovaEmpresa') }}" class="ion-plus-round"> Nova empresa</a></li>
+              </ul>
+            </li>
+            <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="ion-images"></i><span
+                        class="hide-menu">Banners</span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="{{ route('todosBanners') }}" class="ion-eye"> Ver todos</a></li>
+                <li><a href="{{ route('criarBanner') }}" class="ion-plus-round"> Novo banner</a></li>
               </ul>
             </li>
           @endcan
