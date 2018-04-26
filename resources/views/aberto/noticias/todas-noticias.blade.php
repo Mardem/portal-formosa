@@ -90,7 +90,7 @@
                 <div class="row">
                     <div class="container">
                         <div class="alert sem-resultado" role="alert" style="padding: 30px;">
-                            Não foi encontrado nenhuma notícia essa pesquisa
+                            Não foi encontrado nenhuma notícia pra essa pesquisa
                         </div>
                     </div>
                 </div>
@@ -178,6 +178,11 @@
 @section('styles-src')
     <link rel="stylesheet" href="{{ asset('css/navbar-nivel-2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/todas-noticias.min.css') }}">
+    <style>
+        .main {
+            display: block !important;
+        }
+    </style>
 @endsection
 
 @section('script-src')

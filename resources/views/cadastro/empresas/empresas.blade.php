@@ -123,6 +123,15 @@
           <input type="text" name="descricao" class="form-control" required>
           <small class="text-muted">Escreva a descrição da categoria com o mínimo de 100 caracteres</small>
         </div>
+
+        <div id="cp4" class="input-group colorpicker-component" title="Using color option">
+          <input type="text" name="background" class="form-control input-lg" aria-describedby="basic-addon1"/>
+          <span class="input-group-addon" id="basic-addon1" style="color: #fff;padding: 10px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b class="ion-paintbucket"> Categoria</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+        </div>
+
+        <br>
         <button class="btn btn-info btn-block">
           <i class="fa fa-save"></i>
           Salvar
@@ -142,7 +151,7 @@
           <tbody>
             @foreach($categorias as $categoria)
               <tr>
-                <td>{{ $categoria->id }}</td>
+                <td style="background: {{ $categoria->fundo }};color: #fff;text-align: center">{{ $categoria->id }}</td>
                 <td>{{ $categoria->nome }}</td>
                 <td>{{ $categoria->descricao }}</td>
                 <td>
@@ -159,7 +168,10 @@
 @endsection
 
 @section('script-src')
+  <script src="{{ asset('node_modules/trumbowyg/dist/trumbowyg.min.js') }}"></script>
+  <script src="{{ asset('js/vendor/bootstrap-color-picker/dist/js/bootstrap-colorpicker.js') }}"></script>
   <script src="{{ asset('node_modules/sweetalert/dist/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('js/noticias.min.js') }}"></script>
   @if(Session::has('success'))
     <script>
       swal({
@@ -185,4 +197,9 @@
     $('#telefone').inputmask("(99) 9999-9999");  //static mask
     $('#cnpj').inputmask("99.999.999/9999-99");  //static mask
   </script>
+@endsection
+
+@section('links-src')
+  <link rel="stylesheet" href="{{ asset('node_modules/trumbowyg/dist/ui/trumbowyg.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('js/vendor/bootstrap-color-picker/dist/css/bootstrap-colorpicker.css') }}">
 @endsection

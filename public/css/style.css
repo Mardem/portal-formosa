@@ -5,6 +5,17 @@
 
 
 */
+.content {
+  position: relative;
+  min-height: 100vh;
+}
+.main {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .loader {
   border: 8px solid #f3f3f3;
   border-radius: 50%;

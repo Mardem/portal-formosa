@@ -57,9 +57,10 @@ Route::group(['middleware' => ['auth', 'can:admin'], 'namespace' => 'Banner', 'p
 });
 
 Route::group(['namespace' => 'Aberto'], function () {
-    Route::get('{noticia}', 'NoticiasController@mostrarNoticia')->name('lerNoticia');
-    Route::get('q/pesquisa', 'PesquisasController@pesquisaEmpresa')->name('pesquisaEmpresa');
+    Route::get('noticia/{noticia}', 'NoticiasController@mostrarNoticia')->name('lerNoticia');
+    Route::get('q', 'EmpresasController@index')->name('pesquisaEmpresa');
     Route::get('p/portfolio', 'HomeController@portfolio')->name('portfolio');
+    Route::get('cadastrar-empresa-online', 'EmpresasController@cadastrarMinhaEmpresa')->name('cadastrarMinhaEmpresa');
 });
 
 Route::group(['namespace' => 'Aberto', 'prefix' => 'noticias'], function () {

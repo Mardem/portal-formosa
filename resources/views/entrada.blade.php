@@ -89,7 +89,7 @@
   <hr>
   <section>
     <div align="center">
-      <a href="#linkCadastro" class="link-sem-traco">
+      <a href="{{ route('cadastrarMinhaEmpresa') }}" class="link-sem-traco">
         <div class="cadastro-empresa">
           <h2>Cadastre sua empresa</h2>
           <p class="lead">
@@ -105,15 +105,16 @@
   <br><br>
   <section class="noticias-destaque">
 
-    <!--
-        Serão 6 notícias vindas do Blog ambas serão as mais atuais as recentemente postada
+    {{--
+    Serão 6 notícias vindas do Blog ambas serão as mais atuais as recentemente postada
         Uma categoria de filtro deverá ser criada para que o usuário possa alterar as notícias
         Lembrando: As 6 notícias, exemplo:
         Se ele clicar em Educação essas 6 notícias em destaques aleatório passam a ser 6
         notícias em destaque de EDUCAÇÃO.
 
         Usar de links buscando dados do servidor como foi usado na Biblioteca
-    -->
+    --}}
+
     <div class="container">
       <div class="row">
         @foreach($noticias as $noticia)
@@ -122,7 +123,7 @@
               <img class="card-img-top" src="{{ asset('img/loaders/carregamento-noticias-portal-formosa.gif') }}" data-src="{{ $noticia->imagem }}" alt="Card image cap">
               <div class="card-body card-body-news">
                 <h5 class="card-title card-title-pf">
-                  <a href="{{ $noticia->link }}">
+                  <a href="noticia/{{ $noticia->link }}">
                     @php
                       echo substr($noticia->titulo, 0, 33)
                     @endphp
@@ -341,6 +342,7 @@
       </div>
     </div>
   </section>
+
 @endsection
 
 @section('styles-src')

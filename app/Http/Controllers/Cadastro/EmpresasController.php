@@ -71,6 +71,7 @@ class EmpresasController extends Controller
             $c = new \App\Models\Categoria;
             $c->nome = $request->categoria;
             $c->local = 0;
+            $c->fundo = $request->background;
             $c->descricao = $request->descricao;
             $c->save();
             session()->flash('success', 'Categoria cadastrada com sucesso!');

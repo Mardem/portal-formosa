@@ -7,11 +7,9 @@ use App\Http\Controllers\Controller;
 
 class NoticiasController extends Controller
 {
-    public function mostrarNoticia ($link)
+    public function mostrarNoticia($link)
     {
         $nC = \App\Models\Noticia::where('link', '=', $link)->count();
-        
-        
         if ($nC == 0) {
             abort(404);
         } else {
@@ -23,7 +21,7 @@ class NoticiasController extends Controller
         }
     }
 
-    public function pesquisaNoticia (Request $request)
+    public function pesquisaNoticia(Request $request)
     {
         $limit = $request->all()['limit'] ?? 20;
         $order = $request->all()['order'] ?? null;
@@ -38,7 +36,7 @@ class NoticiasController extends Controller
             $pesquisa[0] = '%' . $pesquisa[0] . '%';
         }
         $categoria = $request->all()['categoria'] ?? [];
-        if($categoria) {
+        if ($categoria) {
             $categoria = explode(',', $categoria);
         }
 
@@ -47,7 +45,7 @@ class NoticiasController extends Controller
         $autoresCadastrado = \App\User::all();
 
         $result = \App\Models\Noticia::orderBy($order[0], $order[1])
-            ->where(function($query) use ($pesquisa) {
+            ->where(function ($query) use ($pesquisa) {
                 if ($pesquisa) {
                     return $query->where('titulo', 'like', $pesquisa[0]);
                 }

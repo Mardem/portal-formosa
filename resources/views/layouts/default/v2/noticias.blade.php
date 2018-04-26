@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('titlePage') Portal Formosa GO - Seu portal de notícias</title>
+    <title>@yield('titlePage') Portal Formosa</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,8 +24,10 @@
     @include('layouts.default.components.menu-nivel-2')
 </header>
 
-<main class="section-wrap">
-    @yield('container')
+<main class="section-wrap main">
+    <section class="content">
+        @yield('container')
+    </section>
 </main>
 
 @include('layouts.default.components.scripts')

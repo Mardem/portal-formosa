@@ -4,7 +4,7 @@
 
     <section class="container">
         <div class="apresentacao" align="center">
-            <h1>Vejas as todas notícias que estão no Portal Formosa </h1>
+            <h1>Vejas as todas empresas que estão no Portal Formosa </h1>
             <p class="lead">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium dolore nam optio voluptatibus?
                 Asperiores delectus illo laborum nostrum perspiciatis quidem, rem sit ut veniam? Adipisci dolores
@@ -84,13 +84,14 @@
     </section>
 
     <section class="resultado-noticias">
+
         <div class="container">
 
             @if($result->total() == 0)
                 <div class="row">
                     <div class="container">
                         <div class="alert sem-resultado" role="alert" style="padding: 30px;">
-                            Não foi encontrado nenhuma notícia essa pesquisa
+                            Não foi encontrado nenhuma empresa pra essa pesquisa
                         </div>
                     </div>
                 </div>
@@ -144,21 +145,13 @@
                                  class="imagem-header">
                             <div class="card-body">
                                 <p align="center">
-                                    <a href="{{ url($noticia->link) }}">{{ $noticia->titulo }}</a>
+                                    <a href="">{{ $noticia->nome }}</a>
                                 </p>
                                 <p class="lead" align="justify">
-                                    {{ $noticia->descricao }}
+                                    {{ $noticia->endereco }} - {{ $noticia->bairro }} - {{ $noticia->cidade }}/{{ $noticia->estado }}
                                 </p>
                                 <p>
-
-                                    @php
-                                        $cor = \App\Models\Categoria::where('nome', '=', $noticia->categoria)->get()[0];
-                                    @endphp
-
-                                    <span style="float: right;background: {{ $cor->fundo }} !important;" class="label">
-                                        <a href="?categoria={{ $noticia->categoria }}" style="color: #fff">{{ $noticia->categoria }}</a>
-                                    </span>
-
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cum dolore, dolorem eius eum harum ipsum iure mollitia natus nesciunt quis quod repellat, sapiente, sequi sit unde vel vitae. Similique?
                                 </p>
                             </div>
                         </div>
@@ -172,6 +165,8 @@
                 </div>
             </div>
         </div>
+
+
     </section>
 @endsection
 
